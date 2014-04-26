@@ -1,0 +1,31 @@
+ <!doctype html> 
+ <html lang="es">
+	<head> 
+ <meta name="Incendios en España" content="text/html;" http-equiv="content-type" charset="utf-8"> 
+ <meta name="Incendios en España" content="text/html;" http-equiv="content-type" charset="utf-8"> <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" /> <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script> 
+	</head> 
+		<body> 
+			<h1>Incendio de GALICIA</h1> 
+
+			<div id="map" style="width:100%; height:300px;"></div>	
+
+			<p>En la comunidad GALICIA, provincia PONTEVEDRA, comarca CALDAS-O SALNES, municipio PONTEVEDRA se quemó una superficie forestal de 196.3100. Hubieron 0 muertos y 0 heridos. Se detectó en la fecha 2006-08-06. Se pudo controlar en 230 minutos y extinguir en 350 minutos. La causa del incendio fue Provocados por pirómanos. En la extinción del incendio participaron 16 personas, 0 vehiculos pesados y 3 medios aereos.</p> </body>
+			
+	<script type="text/javascript">
+
+	  var map = L.map('map').setView([ 42.37337700,
+		 -8.59149400], 13);
+
+	  var mapquestLayer = new L.TileLayer(
+			'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png',
+			{
+	      maxZoom: 18,attribution: 'attribution [...]',
+	      subdomains: ['otile1','otile2','otile3','otile4']
+	  });
+
+	  map.addLayer(mapquestLayer);
+
+  	L.marker([42.37337700,-8.59149400]).addTo(map);
+
+	</script>
+</html>

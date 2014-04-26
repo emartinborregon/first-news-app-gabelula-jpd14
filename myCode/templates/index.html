@@ -1,0 +1,74 @@
+<!doctype html> 
+ <html lang="es"> 
+ <head> 
+ <meta name="Incendios en España" content="text/html;" http-equiv="content-type" charset="utf-8"> <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" /> <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script> 
+
+ </head>
+   <body> 
+	   <h1>Incendios en España entre 2001 y 2014</h1>
+	   <div id="map" style="width:100%; height:300px;"></div>
+	   <table border=1 cellpadding=7> 
+		<tr> 
+			<th>Identificador</th> 
+			<th>Superficie Forestal Quemada</th> 
+			<th>Fecha</th> 
+			<th>Muertos</th> 
+			<th>Heridos</th> 
+			<th>Comunidad</th> 
+			<th>Provincia</th> 
+			<th>Comarca</th> 
+			<th>Causa</th> 
+			<th>Perdidas</th> 
+		</tr> {% for obj in object_list %} <tr> 
+				<td><a href="{{ obj['IDPIF'] }}/">{{ obj['IDPIF'] }}</a></td> 
+			<td>{{ obj['SUPQUEMADA'] }}</td> 
+			<td>{{ obj['FECHA'] }}</td> 
+			<td>{{ obj['MUERTOS'] }}</td> 
+			<td>{{ obj['HERIDOS'] }}</td> 
+			<td>{{ obj['COMUNIDAD'].decode('utf-8') }}</td> 
+			<td>{{ obj['PROVINCIA'].decode('utf-8') }}</td> 
+			<td>{{ obj['COMARCA'].decode('utf-8') }}</td> 
+			<td>{{ obj['CAUSA'].decode('utf-8') }}</td> 
+			<td>{{ obj['PERDIDAS'] }}</td> 
+		</tr> {% endfor %} </table>
+		
+		<script type="text/javascript"> 
+			var map = L.map('map').setView([40.2085,-3.713], 5); 
+			
+			var mapquestLayer = new L.TileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', { maxZoom: 18, attribution: 'Data, imagery and map information provided by <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>, <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.', subdomains: ['otile1','otile2','otile3','otile4'] }); 
+			map.addLayer(mapquestLayer); 
+		
+		var data = {
+			"type": "FeatureCollection",
+			"features": [
+				{% for obj in object_list %}
+				{
+				"type": "Feature",
+				"properties": {
+				 "causa": "{{ obj['CAUSA'].decode('UTF-8') }}",
+				 "id": "{{ obj['IDPIF'] }}"
+				},
+				"geometry": {
+				"type": "Point",
+				"coordinates": [{{ obj['LONGITUD'] }}, {{ obj['LATITUD'] }}]
+			}
+			}{% if not loop.last %},{% endif %}
+			{% endfor %}
+				]
+			};
+	
+		var dataLayer = L.geoJson(data, {
+                onEachFeature: function(feature, layer) {
+                    layer.bindPopup(
+                        '<a href="' + feature.properties.id + '/">' +
+                            feature.properties.causa +
+                        '</a>'
+                    );
+                }
+            });
+
+		map.addLayer(dataLayer);
+		</script>
+				
+   </body> 
+ </html>

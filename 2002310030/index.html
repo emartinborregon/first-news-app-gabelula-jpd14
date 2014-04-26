@@ -1,0 +1,31 @@
+ <!doctype html> 
+ <html lang="es">
+	<head> 
+ <meta name="Incendios en España" content="text/html;" http-equiv="content-type" charset="utf-8"> 
+ <meta name="Incendios en España" content="text/html;" http-equiv="content-type" charset="utf-8"> <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" /> <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script> 
+	</head> 
+		<body> 
+			<h1>Incendio de NAVARRA</h1> 
+
+			<div id="map" style="width:100%; height:300px;"></div>	
+
+			<p>En la comunidad NAVARRA, provincia NAVARRA, comarca ZONA 1, municipio BAZTAN se quemó una superficie forestal de 170.0000. Hubieron 0 muertos y 0 heridos. Se detectó en la fecha 2002-02-02. Se pudo controlar en 0 minutos y extinguir en 0 minutos. La causa del incendio fue Sin datos. En la extinción del incendio participaron 14 personas, 2 vehiculos pesados y 0 medios aereos.</p> </body>
+			
+	<script type="text/javascript">
+
+	  var map = L.map('map').setView([ 43.16029400,
+		 -1.50509400], 13);
+
+	  var mapquestLayer = new L.TileLayer(
+			'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png',
+			{
+	      maxZoom: 18,attribution: 'attribution [...]',
+	      subdomains: ['otile1','otile2','otile3','otile4']
+	  });
+
+	  map.addLayer(mapquestLayer);
+
+  	L.marker([43.16029400,-1.50509400]).addTo(map);
+
+	</script>
+</html>

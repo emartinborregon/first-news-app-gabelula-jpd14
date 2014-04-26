@@ -1,0 +1,31 @@
+ <!doctype html> 
+ <html lang="es">
+	<head> 
+ <meta name="Incendios en España" content="text/html;" http-equiv="content-type" charset="utf-8"> 
+ <meta name="Incendios en España" content="text/html;" http-equiv="content-type" charset="utf-8"> <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" /> <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script> 
+	</head> 
+		<body> 
+			<h1>Incendio de C. VALENCIANA</h1> 
+
+			<div id="map" style="width:100%; height:300px;"></div>	
+
+			<p>En la comunidad C. VALENCIANA, provincia CASTELLON, comarca EL BAIX MAESTRAT, municipio XERT/CHERT se quemó una superficie forestal de 3200.0000. Hubieron 0 muertos y 0 heridos. Se detectó en la fecha 2001-08-29. Se pudo controlar en 6545 minutos y extinguir en 11951 minutos. La causa del incendio fue RAYO. En la extinción del incendio participaron 364 personas, 6 vehiculos pesados y 32 medios aereos.</p> </body>
+			
+	<script type="text/javascript">
+
+	  var map = L.map('map').setView([ 40.53549500,
+		 0.13556200], 13);
+
+	  var mapquestLayer = new L.TileLayer(
+			'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png',
+			{
+	      maxZoom: 18,attribution: 'attribution [...]',
+	      subdomains: ['otile1','otile2','otile3','otile4']
+	  });
+
+	  map.addLayer(mapquestLayer);
+
+  	L.marker([40.53549500,0.13556200]).addTo(map);
+
+	</script>
+</html>
